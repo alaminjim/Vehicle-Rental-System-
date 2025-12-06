@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import config from "./config";
 import { initDB } from "./config/db";
 
@@ -14,6 +14,10 @@ const port = config.port;
 app.use(express.json());
 
 initDB();
+
+app.get("/", (req: Request, res: Response) => {
+  res.status(200).json({ success: true, message: "api is working" });
+});
 
 //auth
 app.use("/api/v1/auth/signup", signUpRoute.route);
