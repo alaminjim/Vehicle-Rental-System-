@@ -4,11 +4,11 @@ import auth from "../../middleware/auth";
 
 const routes = express.Router();
 
-routes.post("/", auth(), vehiclesController.createVehicles);
+routes.post("/", auth("admin"), vehiclesController.createVehicles);
 routes.get("/", auth(), vehiclesController.getVehicles);
 routes.get("/:vehicleId", auth(), vehiclesController.getSingleVehicles);
-routes.put("/:vehicleId", auth(), vehiclesController.updateVehicles);
-routes.delete("/:vehicleId", auth(), vehiclesController.deleteVehicles);
+routes.put("/:vehicleId", auth("admin"), vehiclesController.updateVehicles);
+routes.delete("/:vehicleId", auth("admin"), vehiclesController.deleteVehicles);
 
 export const vehiclesRoute = {
   routes,
