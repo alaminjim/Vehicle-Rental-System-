@@ -13,6 +13,7 @@ const port = config.port;
 
 app.use(express.json());
 
+// database
 initDB();
 
 app.get("/", (req: Request, res: Response) => {
